@@ -5,3 +5,6 @@
 **Titanic_Week1.ipynb** : A notebook to try out week one's activites.
 
 **Titanic_Week1_example.ipynb** : An example of week one's activities.
+
+**Titanic_Week2.ipynb** : A notebook to try out week two's activites.
+
