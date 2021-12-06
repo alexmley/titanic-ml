@@ -2,6 +2,6 @@
 
 ### Titanic ML Challenge
 
-**Titanic_Week1.ipynb** : An example of week one's activities; getting started and data exploration
+**Titanic_Week1.ipynb** : A notebook to try out week one's activites.
 
-**Titanic_Week2.ipynb** : An example of week two's activities; continued data exploration data cleaning, and a basic ML model.
+**Titanic_Week1_example.ipynb** : An example of week one's activities.
