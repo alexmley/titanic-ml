@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Teachable Machine Image Classification</title>
+  <style>
+    .prediction {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Teachable Machine Image Classification</h1>
+  <input type="file" accept="image/jpeg,image/png" onchange="classifyImage(event)">
+  <div id="result"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script>
+    let model;
+    async function init() {
+      const URL = "https://teachablemachine.withgoogle.com/models/Az3gRpvu2/";
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+
+      model = await tmImage.load(modelURL, metadataURL);
+      console.log("Model loaded successfully");
+    }
+    init();
+
+    async function classifyImage(event) {
+      const image = event.target.files[0];
+      const prediction = await predict(image);
+      const resultElement = document.getElementById("result");
+
+      // Clear any previous results
+      resultElement.innerHTML = "";
+
+      // Display the top three predictions
+      const topPredictions = prediction.sort((a, b) => b.probability - a.probability).slice(0, 3);
+      topPredictions.forEach(p => {
+        const percent = Math.round(p.probability * 100);
+        const className = p.className.replace(/ /g, "-");
+        const predictionElement = document.createElement("div");
+        predictionElement.className = "prediction";
+        predictionElement.innerHTML = `${className}: ${percent}%`;
+        resultElement.appendChild(predictionElement);
+      });
+    }
+
+    async function predict(image) {
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(image);
+      await new Promise(resolve => { img.onload = resolve; });
+
+      const prediction = await model.predict(img);
+
+      return prediction;
+    }
+  </script>
+</body>
+</html>
