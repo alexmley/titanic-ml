@@ -12,4 +12,6 @@ Here is a breakdown of the code:
         classifyImage(event): An async function that takes an image file, runs the classification, and displays the results.
         predict(image): An async function that makes predictions on the given image using the loaded model.
 
-When the user selects an image file, the classifyImage function is called, which in turn calls the predict function. The top three predictions are displayed in the "result" div element. The results show the class name and the probability (as a percentage) of each prediction.
+When the user selects an image file, the classifyImage function is called, which in turn calls the predict function. 
+The top three predictions are displayed in the "result" div element. 
+The results show the class name and the probability (as a percentage) of each prediction.
