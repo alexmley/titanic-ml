@@ -1,0 +1,15 @@
+This code is an HTML file that demonstrates image classification using the Teachable Machine library, a web-based tool for creating custom machine learning models without coding. It uses TensorFlow.js for handling the underlying machine learning operations.
+
+Here is a breakdown of the code:
+
+    The DOCTYPE, html, head, and body elements are standard HTML elements that structure the page.
+    Inside the head, there's a meta tag specifying the character encoding as UTF-8, a title tag, and a style tag with CSS for formatting the prediction results.
+    The body contains an h1 heading, an input field for selecting an image file, and a div element to display the results.
+    The script tags import the required TensorFlow.js and Teachable Machine libraries.
+    The JavaScript code defines several functions and variables:
+        model: A variable to store the loaded model.
+        init(): An async function that initializes and loads the model from the given URL.
+        classifyImage(event): An async function that takes an image file, runs the classification, and displays the results.
+        predict(image): An async function that makes predictions on the given image using the loaded model.
+
+When the user selects an image file, the classifyImage function is called, which in turn calls the predict function. The top three predictions are displayed in the "result" div element. The results show the class name and the probability (as a percentage) of each prediction.
